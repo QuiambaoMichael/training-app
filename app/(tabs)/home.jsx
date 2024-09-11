@@ -1,12 +1,16 @@
-import { FlatList, Image, RefreshControl, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { FlatList, Image, RefreshControl, StyleSheet, Text, View, Alert } from 'react-native'
+import React, { useEffect } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { images } from '../../constants'
 import SearchInput from '../../components/SearchInput'
 import Trending from '../../components/Trending'
 import EmptyState from '../../components/EmptyState'
 import { useState } from 'react'
+import { getAllPosts } from '../../lib/appwrite'
+import useAppwrite from '../../lib/UseAppwrite'
 const Home = () => {
+  const { data: posts } = useAppwrite(getAllPosts)
+
   const [refreshing, setRefreshing] = useState(false)
 
 
@@ -14,6 +18,7 @@ const Home = () => {
     setRefreshing(true)
     setRefreshing(false)
   }
+  console.log(posts)
   return (
     <SafeAreaView className="bg-primary h-full">
       <FlatList
@@ -64,7 +69,7 @@ const Home = () => {
 
         )}
 
-        RefreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh}/>}
+        RefreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
       />
     </SafeAreaView>
   )
