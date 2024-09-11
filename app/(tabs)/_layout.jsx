@@ -24,7 +24,7 @@ const TabLayout = () => {
     <>
       <Tabs
         screenOptions={{
-          tabBarShowLabel: true,
+          tabBarShowLabel: false,
           tabBarActiveTintColor: '#FFA001',
           tabBarInactiveTintColor: '#CDCDE0',
           tabBarStyle:{
@@ -66,10 +66,10 @@ const TabLayout = () => {
           name="bookmark"
           options={{
             title: 'Bookmark',
-            headerShown: false,
+            headerShown: false, 
             tabBarIcon: ({ color, focused }) => (
               <TabIcon
-                icon={icons.bookkmark}
+                icon={icons.bookmark}
                 color={color}
                 name="Bookmark"
                 focused={focused}

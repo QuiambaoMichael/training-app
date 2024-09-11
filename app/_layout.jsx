@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import { Slot, Stack, SplashScreen } from 'expo-router'
 import { useFonts } from 'expo-font'
 import { useEffect } from 'react'
-
+import  GlobalProvider  from '../context/GlobalProvider'
 
 SplashScreen.preventAutoHideAsync();
 const RootLayout = () => {
@@ -35,11 +35,14 @@ const RootLayout = () => {
         //     <Slot />
         //     <Text>Footer</Text>
         // </>
-
-        <Stack>
-            <Stack.Screen name="index" options={{ headerShown: false }} />
-
-        </Stack>
+        <GlobalProvider>
+            <Stack>
+                <Stack.Screen name="index" options={{ headerShown: false }} />
+                <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+                <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+                {/* <Stack.Screen name="/search/[query]" options={{ headerShown: false }} /> */}
+            </Stack>
+        </GlobalProvider>
     )
 }
 
